@@ -1,0 +1,25 @@
+<div class="quizzes">
+    <card-body>
+        <h1> My Quizzes </h1>
+        <table class="table table-striped table-responsive-md btn-table">
+
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Quiz Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            
+            {{#each}}
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Multiplication</td>
+                <td><button type="button" class="btn btn-indigo btn-sm m-0">Start</button></td>
+              </tr>
+            </tbody>
+            {{/each}}
+            </table>
+    </card-body>
+</div>
