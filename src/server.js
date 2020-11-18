@@ -2,6 +2,7 @@
 const express = require('express');
 // For being able to join directory names for easier manipulation
 const path = require('path');
+const Handlebars = require('handlebars');
 // If we want to use handlebars
 const exphbs = require('express-handlebars');
 // For easier use of CRUD
@@ -10,6 +11,8 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
+
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 // Initializations
 const app = express();
@@ -25,7 +28,8 @@ app.engine('hbs', exphbs({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
-    extname: 'hbs'
+    extname: 'hbs',
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 
 app.set('view engine', 'hbs');
@@ -54,6 +58,7 @@ app.use((req, res, next) => {
 // Routes
 app.use(require('./routes/index'));
 app.use(require('./routes/users'));
+app.use(require('./routes/courses'));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
