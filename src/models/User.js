@@ -9,8 +9,8 @@ const UserSchema = new Schema({
     email: {type: String, required: true},
     password: {type: String, required: true},
     dateOC: {type: Date, default: Date.now},
-    // 1 = admin, 2 = teacher, 3 = student
-    level: {type: Number, default: 3}
+    // true if teacher
+    level: {type: Boolean, default: false}
 });
 
 UserSchema.methods.encryptPassword = async (password) => {

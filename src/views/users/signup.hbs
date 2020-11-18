@@ -7,7 +7,13 @@
             <div class="card-body">
                 <form action="/users/signup" method="POST">
                     <div class="form-group">
+                        <input type="text" class="form-control" name="id" placeholder="Matricula" value="{{id}}">
+                    </div>
+                    <div class="form-group">
                         <input type="text" class="form-control" name="name" placeholder="Nombre" value="{{name}}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="last_name" placeholder="Apellido" value="{{last_name}}">
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" name="email" placeholder="Email" value="{{email}}">
@@ -20,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">
-                            Sign Up
+                            Registrarse
                         </button>
                     </div>
                 </form>                

@@ -34,7 +34,7 @@ router.post('/courses/new-course', async (req, res) => {
     const { course_id, subject, teacher_id } = req.body;
     const errors = [];
 
-    if (course_id.length <= 0 || subject.length <= 0 || teacher_id.length <= 0)
+    if (course_id.length <= 0 || subject.length <= 0)
     {
         errors.push({text: 'Faltan uno o más campos por llenar'});
     }

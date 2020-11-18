@@ -21,12 +21,22 @@ router.get('/users/signup', (req, res) => {
 });
 
 router.post('/users/signup', async (req, res) => {
-    const { name, email, password, confirm_password } = req.body;
+    var { id, name, last_name, email, password, confirm_password } = req.body;
     const errors = [];
+
+    if (id.length <= 0)
+    {
+        errors.push({text: 'Favor de ingresar matricula'});
+    }
 
     if (name.length <= 0)
     {
         errors.push({text: 'Favor de ingresar nombre'});
+    }
+
+    if (last_name.length <= 0)
+    {
+        errors.push({text: 'Favor de ingresar apellido'});
     }
 
     if (email.length <= 0)
@@ -45,10 +55,18 @@ router.post('/users/signup', async (req, res) => {
 
     if (errors.length > 0)
     {
-        res.render('users/signup', {errors, name, email, password, confirm_password});
+        res.render('users/signup', {errors, id, name, last_name, email, password, confirm_password});
     }
     else
     {
+        const idUser = await User.findOne({id: id});
+
+        if (idUser)
+        {
+            req.flash('error_msg', 'Matricula ya tiene una cuenta registrada');
+            res.redirect('/users/signup');
+        }
+        
         const emailUser = await User.findOne({email: email});
 
         if (emailUser)
@@ -56,7 +74,19 @@ router.post('/users/signup', async (req, res) => {
             req.flash('error_msg', 'Correo ya tiene una cuenta registrada');
             res.redirect('/users/signup');
         }
-        const newUser = new User({name, email, password});
+
+        if (id[0] == 'L' || id[0] == 'A')
+        {
+            id = id.toLowerCase();
+        }
+
+        const newUser = new User({id, name, last_name, email, password});
+
+        if (id[0] == 'l')
+        {
+            newUser.level = true;
+        }
+        
         newUser.password = await newUser.encryptPassword(password);
         await newUser.save();
         req.flash('success_msg', 'Registro realizado exitosamente');
