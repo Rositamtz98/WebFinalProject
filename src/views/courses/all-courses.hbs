@@ -14,6 +14,35 @@
                             Borrar
                         </button>
                     </form>
+                    <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#addStudentModal">
+                        Añadir alumno
+                    </button>
+                    <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Buscar estudiante por matricula</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label class="sr-only" for="student_id">Matricula</label>
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">a</div>
+                                        </div>
+                                        <input type="text" class="form-control" name="student_id" placeholder="Matricula">
+                                    </div>
+                                    <button class="btn btn-primary mb-2" onclick="findStudent()">Añadir</button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,3 +55,10 @@
         </div>
     {{/each}}
 </div>
+<script>
+    function findStudent()
+{
+    var student_id = document.getElementsByName("student_id");
+    console.log(student_id);
+}
+</script>
