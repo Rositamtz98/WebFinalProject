@@ -1,8 +1,8 @@
 <div class="jumbotron-mt-4">
-    <h1 class="display-4">Proyecto Final</h1>
+    {{!-- <h1 class="display-4">Proyecto Final</h1> --}}
     {{#if user}}
         {{#if user.level}}
-            <p class="lead">Bienvenido, maestro {{user.name}} {{user.last_name}}</p>
+            {{> dashboard}}
         {{else}}
             <p class="lead">Bienvenido, estudiante {{user.name}} {{user.last_name}}</p>
         {{/if}}
