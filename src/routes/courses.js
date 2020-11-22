@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const express = require('express');
 const Course = require('../models/Course');
+const User = require('../models/User');
 const router = express.Router();
 
 router.get('/courses', async (req, res) => {
@@ -11,6 +12,13 @@ router.get('/courses', async (req, res) => {
 router.get('/courses/add', (req, res) => {
     res.render('courses/new-course');
 });
+
+router.get('/courses/add-student/student_id', async (req, res) => {
+    const { student_id } = req.body;
+    console.log(req.params);
+    const student = await User.find({ id: student_id });
+    console.log(student);
+})
 
 router.get('/courses/edit/:id', async (req, res) => {
     const course = await Course.findById(req.params.id);

@@ -10,6 +10,10 @@ router.get('/users/login', (req, res) => {
     res.render('users/login');
 });
 
+router.get('/search', (req, res) => {
+    var q = req.query;
+})
+
 router.post('/users/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/users/login',
