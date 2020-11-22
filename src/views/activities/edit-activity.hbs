@@ -1,0 +1,31 @@
+{{>sidebar}}
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Editar Actividad {{activity.activity_id}}</h3>
+        </div>
+        <div class="card-body">
+            <form action="/activities/edit-activity/{{activity._id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    <input type="url" name="link" class="form-control" placeholder="Link" value="{{activity.link}}">
+                </div>
+                {{!-- <div class="form-check">
+                  <input type="checkbox" name="quiz" onchange="onCheck()" class="form-check-input" id="exampleCheck1" data-toggle="switch" value={{#if activity.quiz}}"true"{{else}}"false"{{/if}}>
+                  <label class="form-check-label" for="exampleCheck1">Quiz?</label>
+                </div> --}}
+                <div class="form-group">
+                    <input type="text" name="value" class="form-control" placeholder="Value" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="teacher_id" class="form-control" placeholder="Teacher ID" value="{{activity.teacher_id}}">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

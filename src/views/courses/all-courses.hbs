@@ -1,5 +1,7 @@
 {{> sidebar }}
 <div class="row">
+                      <a href="/courses/add" class="btn btn-success btn-block">+</a>
+
     {{#each courses}}
         <div class="col-md-3">
             <div class="card">
@@ -9,15 +11,16 @@
                     </h4>
                     <h4>{{subject}}</h2>
                     <h4>{{teacher_id}}</h4>
+                    <a href="/courses/view/{{_id}}" class="btn btn-success btn-block">Ver detalle</a>
                     <form action="/courses/delete/{{_id}}?_method=DELETE" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-danger btn-block btn-sm" type="submit">
                             Borrar
                         </button>
                     </form>
-                    <button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#addStudentModal">
+                    <a href="/courses/add-student/{{_id}}" class="btn btn-success btn-block">
                         Añadir alumno
-                    </button>
+                    </a>
                     <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -28,6 +31,16 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Students</label>
+                                    <select name="student_id" class="form-control" id="exampleFormControlSelect1" onchange="onSelect()">
+                                        {{#each students}}
+                                            <option value={{_id}}>{{id}}</option>
+                                        {{else}}
+                                            <option>No hay alumnos</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
                                     <label class="sr-only" for="student_id">Matricula</label>
                                     <div class="input-group mb-2 mr-sm-2">
                                         <div class="input-group-prepend">
@@ -62,4 +75,14 @@
     var student_id = document.getElementsByName("student_id");
     console.log(student_id);
 }
+
+  function onSelect() {
+    console.log('here');
+    var e = document.getElementById("exampleFormControlSelect1");
+    var v = e.value;
+    console.log(e);
+    // {{course_id}} = v;
+    console.log(v);
+   // console.log({{course_id}})
+  }
 </script>

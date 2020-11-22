@@ -1,22 +1,29 @@
 const { Router } = require('express');
 const express = require('express');
 const Course = require('../models/Course');
+const Activity = require('../models/Activity');
 const User = require('../models/User');
 const router = express.Router();
 
 router.get('/courses', async (req, res) => {
     const courses = await Course.find();
-    res.render('courses/all-courses', { courses });
+    const students = await User.find({level: false});
+    console.log(students);
+    res.render('courses/all-courses', { courses, students });
 });
 
 router.get('/courses/add', (req, res) => {
     res.render('courses/new-course');
 });
 
-router.get('/courses/add-student/student_id', async (req, res) => {
+router.get('/courses/add-student/:id', async (req, res) => {
     const { student_id } = req.body;
     console.log(req.params);
+    const courseWithID = await Course.findById(req.params.id);
+    const students = await User.find({level: false});
     const student = await User.find({ id: student_id });
+    res.render('courses/new-student', { students, students, courseWithID });
+
     console.log(student);
 })
 
@@ -66,6 +73,43 @@ router.post('/courses/new-course', async (req, res) => {
         res.redirect('/courses');
     }
 });
+
+router.post('/courses/new-student/:id', async (req, res) => {
+    const { student_id, courseWithID } = req.body;
+    const errors = [];
+
+        console.log()
+
+    if (errors.length > 0)
+    {
+        res.render('courses/add-student', {errors, course_id, sutudent_id});
+    }
+    else
+    {
+        console.log("found");
+        console.log(courseWithID);
+        const student = await courseWithID.students.findOne({student_id: student_id});
+        console.log(student);
+        if (student)
+        {
+            req.flash('error_msg', 'ID del alumno previamente registrado');
+            res.redirect('/courses/all-courses');
+        }
+        const res = await User.find({id: student_id});
+        course.students.push(res);
+        await course.save();
+        req.flash('success_msg', 'Alumno registrado exitosamente');
+        res.redirect('/courses/all-courses');
+    }
+});
+
+router.get('/courses/view/:id', async (req, res) => {
+    const course = await Course.findById(req.params.id);
+    const acts = await Activity.find({course_id: req.params.id});
+    console.log(acts);
+    res.render('courses/course-detail', { course, acts});
+});
+
 
 
 module.exports = router;
