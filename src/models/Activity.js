@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const {Schema, SchemaTypes} = mongoose;
+
+require('mongoose-type-url');
+
 
 const ActivitySchema = new Schema({
+    title: ({type: String, required: true}),
     course_id: {type: String, required: true},
-    student_id: {type: String},
-    value: {type: Number, default: 0},
+    link: {type: SchemaTypes.Url, required: true},
     quiz: {type: Boolean, default: 0}
 });
 
