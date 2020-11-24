@@ -6,7 +6,7 @@ const SubmissionSchema = new Schema({
     course_id: {type: String, required: true},
     student_id: {type: String, required: true},
     activity_id: {type: String, required: true},
-    link: {type: SchemaTypes.Url, required: true},
+    link: {type: Schema.Types.ObjectId, required: true},
     grade: {type: Number, default: 0},
 });
 

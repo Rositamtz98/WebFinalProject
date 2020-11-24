@@ -3,11 +3,10 @@ const {Schema, SchemaTypes} = mongoose;
 
 
 
-
 const ActivitySchema = new Schema({
     title: ({type: String, required: true}),
     course_id: {type: String, required: true},
-    link: {type: SchemaTypes.Url, required: true},
+    link: {type: Schema.Types.ObjectId, required: true},
     quiz: {type: Boolean, default: 0}
 });
 
