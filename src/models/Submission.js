@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema, SchemaTypes} = mongoose;
 
-require('mongoose-type-url');
-
 
 const SubmissionSchema = new Schema({
     course_id: {type: String, required: true},

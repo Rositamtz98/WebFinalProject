@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema, SchemaTypes} = mongoose;
 
-require('mongoose-type-url');
+
 
 
 const ActivitySchema = new Schema({
