@@ -1,3 +1,33 @@
 {{>sidebar}}
 {{>footer}}
- <h3>aqui se ven las submissions de los estudiantes match de activity id</h3>
+<h2>Entregas de los alumnos para la actividad {{activity.title}}</h2>
+<div class="row">
+  {{#each submissions}}
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h3>Alumno {{student_id}}</h3>
+          <h4>{{grade}}</h4>
+          <button class="btn btn-link" onclick=" window.open('{{link}}','_blank')" type="button">Abrir en Google Drive</button>
+          <form action="/student/grade/{{_id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="form-group">
+              <input type="number" min="0" max="100" name="grade" class="form-control" placeholder="Grade" value="{{grade}}">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit">
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="card mx-auto">
+      <div class="card-body">
+        <p class="lead">No hay ninguna entrega</p>
+      </div>
+    </div>
+  {{/each}}
+</div>

@@ -3,41 +3,31 @@
 
 <div class="row">
   <a href="/activities/add" class="btn btn-success btn-block">+</a>
-    {{#each activities}}
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title d-flex justify-content-between align-items-center">
-                        {{activity_id}} <a href="/activities/edit/{{_id}}"><i class="fas fa-edit"></i></a>
-                    </h4>
-                    <p>{{link}}</p>
-                    <h4>{{value}}</h2>
-                    <h4>{{teacher_id}}</h4>
-                    <h4>{{quiz}}</h4>
-                    <form action="/activities/delete/{{_id}}?_method=DELETE" method="POST">
-                         <a href="/activities/view/{{_id}}" class="btn btn-success btn-block">Ver detalle</a>
-
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-danger btn-block btn-sm" type="submit">
-                            Borrar
-                        </button>
-                    </form>
-                </div>
-            </div>
+  {{#each activities}}
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title d-flex justify-content-between align-items-center">{{title}}</h2>
+            <a href="/activities/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+          <button class="btn btn-link" onclick=" window.open('{{link}}','_blank')" type="button">Abrir en Google Drive</button>
+          <h4>{{teacher_id}}</h4>
+          <h4>{{#if quiz}}Esta actividad es quiz {{else}}{{/if}}</h4>
+          <form action="/activities/delete/{{_id}}?_method=DELETE" method="POST">
+            <a href="/activities/view/{{_id}}" class="btn btn-success btn-block">Ver detalle</a>
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger btn-block btn-sm" type="submit">
+              Borrar
+            </button>
+          </form>
         </div>
-    {{else}}
-        <div class="card mx-auto">
-            <div class="card-body">
-                <p class="lead">No hay ninguna actividad</p>
-                <a href="/activities/add" class="btn btn-success btn-block">Crea uno</a>
-            </div>
-        </div>
-    {{/each}}
+      </div>
+    </div>
+  {{else}}
+    <div class="card mx-auto">
+      <div class="card-body">
+        <p class="lead">No hay ninguna actividad</p>
+        <a href="/activities/add" class="btn btn-success btn-block">Crea una</a>
+      </div>
+    </div>
+  {{/each}}
 </div>
-<script>
-  function findCourse()
-{
-    var course_id = document.getElementsByName("course_id");
-    console.log(course_id);
-}
-</script>

@@ -5,9 +5,9 @@ require('mongoose-type-url');
 
 
 const ActivitySchema = new Schema({
+    title: ({type: String, required: true}),
     course_id: {type: String, required: true},
     link: {type: SchemaTypes.Url, required: true},
-    value: {type: Number, default: 0},
     quiz: {type: Boolean, default: 0}
 });
 

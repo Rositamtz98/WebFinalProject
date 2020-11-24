@@ -1,0 +1,19 @@
+<div class="row">
+  {{#each acts}}
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <button class="btn btn-link" onclick=" window.open('{{link}}','_blank')" type="button">
+            link a la tarea</button>
+          <a href="/student/submit/{{@root/courseId}}/{{_id}}" class="btn btn-success btn-block">Subir actividad</a>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="card mx-auto">
+      <div class="card-body">
+        <p class="lead">No hay ninguna actividad</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
