@@ -66,6 +66,6 @@ app.use(require('./routes/activities'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Server
-app.listen(app.get('port'), () => {
+app.listen(process.env.PORT || app.get('port'), () => {
     console.log('Server on port:', app.get('port'));
 });
