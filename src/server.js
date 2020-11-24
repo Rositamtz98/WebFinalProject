@@ -12,6 +12,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 
+
+
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 // Initializations
@@ -66,6 +68,6 @@ app.use(require('./routes/activities'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Server
-app.listen(process.env.PORT || app.get('port'), () => {
+app.listen(app.get('port'), () => {
     console.log('Server on port:', app.get('port'));
 });
