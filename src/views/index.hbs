@@ -1,15 +1,45 @@
-<div class="jumbotron-mt-4">
-    <h1 class="display-4">Proyecto Final</h1>
+
+    {{!-- <h1 class="display-4">Proyecto Final</h1> --}}
     {{#if user}}
         {{#if user.level}}
-            <p class="lead">Bienvenido, maestro {{user.name}} {{user.last_name}}</p>
+            {{> dashboard}}
         {{else}}
             <p class="lead">Bienvenido, estudiante {{user.name}} {{user.last_name}}</p>
+            {{> studentHome}}
         {{/if}}
     {{else}}
-        <p class="lead">Bienvenido</p>
-    {{/if}}
-    <hr class="my-4">
-    <p>Salon digital que permite la interaccion profesor-alumno. Has click al boton para registrarte!</p>
-    <a href=""></a>
+<link rel="stylesheet" href="css/2col.css" type="text/css" media='screen and (min-width:781px)'>
+<div style="padding-top: 0 em !important;">
+
+    <div class="section1">
+        <div class="col-md-6">
+            <h1>Una nueva manera de aprender</h1>
+            <p>Con esta página web podrás ver cursos y actividades al igual que realizarlas.</p>
+        </div>
+        <div class="col-md-6">
+        <img class="img-fluid" src="https://raw.githubusercontent.com/hammercait/fylo-two-column-layout/9597c64eec3cb785b4a04b31e917204c1622355a/images/illustration-1.svg" alt="people working">
+
+        </div>
+    </div>
+    <div class="section2">
+         <div class="col-md-8">
+        <div class="background-color">
+        <div class="text2">
+            <h1>Mantén la productividad en línea</h1>
+            <p>Que ni una pandemia atrase tus cursos. Esta plataforma es ideal para seguir impartiéndolo.<br><br>
+            Sube actividades para tus alumnos. Una vez que ellos las entreguen, podrás revisar y calificar.</p>
+            <div class="testimonial">
+                <img class="img-fluid" src="https://raw.githubusercontent.com/hammercait/fylo-two-column-layout/9597c64eec3cb785b4a04b31e917204c1622355a/images/icon-quotes.svg" alt="quote icon">
+                <p>Diviértete aprendiendo</p>
+            </div>
+        </div>
+        <img class="img-fluid" src="https://raw.githubusercontent.com/hammercait/fylo-two-column-layout/9597c64eec3cb785b4a04b31e917204c1622355a/images/illustration-2.svg" class="sec2img" alt="people working">
+        </div>
+         </div>
+
+    </div>
+
 </div>
+    
+</div>
+    {{/if}}

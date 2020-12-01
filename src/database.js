@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const uri = "mongodb+srv://Sergon:blue@cluster0.ugamq.mongodb.net/proyecto-final?retryWrites=true&w=majority"
 
-mongoose.connect(uri || 'mongodb://localhost/proyecto-final', {
+mongoose.connect('mongodb://localhost/proyecto-final', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,

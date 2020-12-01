@@ -1,24 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
     <div class="container">
         <a class="navbar-brand" href="/">Proyecto Web</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/courses">Clases <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Activities</a>
-                </li>
+                {{#if user.level}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/courses">Cursos <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/activities">Actividades <span class="sr-only">(current)</span></a>
+                    </li>
+                {{/if}}
+
             </ul>
             <ul class="navbar-nav ml-auto">
                 {{#if user}}
@@ -28,9 +28,8 @@
                             {{user.name}} {{user.last_name}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Mi Perfil</a>
-                            <a class="dropdown-item" href="#">Mis Tareas</a>
-                            <div class="dropdown-divider"></div>
+                            {{!-- <a class="dropdown-item" href="/">Mis Cursos</a>
+                            <div class="dropdown-divider"></div> --}}
                             <a class="dropdown-item" href="/users/logout">Logout</a>
                         </div>
                     </li>
@@ -44,5 +43,6 @@
                 {{/if}}
             </ul>
         </div>
+
     </div>
 </nav>

@@ -1,22 +1,32 @@
+
+
 <div class="col-md-4 mx-auto">
-    <div class="card">
-        <div class="card-header">
-            <h3>New Course</h3>
-        </div>
-        <div class="card-body">
-            <form action="/courses/new-course" method="POST">
-                <div class="form-group">
-                    <input type="text" name="course_id" class="form-control" placeholder="ID" autofocus>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="subject" class="form-control" placeholder="Subject">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit">
-                        Save
-                    </button>
-                </div>
-            </form>
-        </div>
+  <div class="card">
+    <div class="card-header">
+      <h3>Nuevo curso</h3>
     </div>
+    <div class="card-body">
+      <form action="/courses/new-course" method="POST">
+        <div class="form-group">
+          <input type="text" name="course_id" class="form-control" placeholder="ID" autofocus>
+        </div>
+        <div class="form-group">
+          <input type="text" name="subject" class="form-control" placeholder="Subject">
+        </div>
+        <label for="exampleFormControlSelect1">Maestro</label>
+        <select name="teacher_id" class="form-control" id="exampleFormControlSelect1">
+          {{#each teachers}}
+            <option value={{id}}>{{id}} - {{name}} {{last_name}}</option>
+          {{else}}
+            <option>No hay maestros</option>
+          {{/each}}
+        </select>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

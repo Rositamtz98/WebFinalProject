@@ -1,0 +1,36 @@
+ 
+ 
+  <link rel="stylesheet" href="/css/teachers.css">
+
+  
+  {{#each acts}}
+    <div class="blog-card">
+                <div class="meta">
+              <div class="photo" style="background-image: url(../../img/act.jpg)"></div>
+          </div>
+        <div class="description">
+                    <h1>{{#if title}}{{title}}{{else}}Sin título{{/if}}</h1>
+          <h2>Del curso {{course_id}}</h2>
+            <p>
+              <p class="read-more"><a onclick=" window.open('{{link}}','_blank')" type="button">Abrir en Google Drive</a></p>
+                <p class="read-more"><a type="button" href="/student/submit/{{@root/courseId}}/{{_id}}">Subir actividad</a></p>
+
+            </p>
+            {{!-- <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                  <p class="read-more">
+
+                  </p>
+
+                </div>
+              </div> --}}
+        </div>
+    </div>
+  {{else}}
+    <div class="card mx-auto">
+      <div class="card-body">
+        <p class="lead">No hay ninguna actividad</p>
+      </div>
+    </div>
+  {{/each}}

@@ -1,47 +1,27 @@
-<div class="col-md-4">
-    <div class="card" style=" outline-style: solid; outline-color:lightgray">
-        <div class="card-head">
-            <h3>Course name</h3>
-        </div>
-        <hr>
-        <div class="card-body">
-            <p>
-                Information about the courses <br>
-                <br> <br> <br>
-            </p>
-            <a href="./more.html" class="btn btn-outline-secondary">Learn More</a>
-        </div>
-    </div>
-</div>
 
-<div class="col-md-4">
-    <div class="card" style=" outline-style: solid; outline-color:lightgray">
-        <div class="card-head">
-            <h3>Course name</h3>
-        </div>
-        <hr>
-        <div class="card-body">
-            <p>
-                Information about the courses <br>
-                <br> <br> <br>
-            </p>
-            <a href="./more.html" class="btn btn-outline-secondary">Learn More</a>
-        </div>
-    </div>
-</div>
+<link rel="stylesheet" href="/css/teachers.css">
 
-<div class="col-md-4">
-    <div class="card" style=" outline-style: solid; outline-color:lightgray">
-        <div class="card-head">
-            <h3>Course name</h3>
+    {{#each courses}}
+            <div class="blog-card">
+                          <div class="meta">
+              <div class="photo" style="background-image: url(img/crs.png)"></div>
+          </div>
+                <div class="description">
+                    <h1>{{subject}}</h1>
+                    <h2>ID del curso: {{course_id}}
+                    </h2>
+                    
+                    <p>Curso impartido por {{teacher_id}}</p>
+                    <p class="read-more">
+                    <a href="/student/view/{{_id}}">Ver actividades</a>
+
+                    </p>
+                </div>
+            </div>
+    {{else}}
+        <div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead">No hay ningún curso</p>
+            </div>
         </div>
-        <hr>
-        <div class="card-body">
-            <p>
-                Information about the courses <br>
-                <br> <br> <br>
-            </p>
-            <a href="./more.html" class="btn btn-outline-secondary">Learn More</a>
-        </div>
-    </div>
-</div>
+    {{/each}}

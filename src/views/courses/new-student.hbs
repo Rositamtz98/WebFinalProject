@@ -1,0 +1,48 @@
+{{!-- ARCHIVO NO UTILIZADO, FOR FUTURE USE --}}
+
+
+
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>New Student</h3>
+        </div>
+        <div class="card-body">
+            <form action="/courses/new-student/{{course._id}}" method="POST">
+              <div class="form-group">
+                  <label for="exampleFormControlSelect1">Students</label>
+                  <select name="student_id" class="form-control" id="exampleFormControlSelect1" onchange="onSelect()">
+                      {{#each students}}
+                          <option value={{_id}}>{{id}}</option>
+                      {{else}}
+                          <option>No hay alumnos</option>
+                      {{/each}}
+                  </select>
+                   <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Save
+                    </button>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function findStudent()
+{
+    var student_id = document.getElementsByName("student_id");
+    console.log(student_id);
+}
+
+  function onSelect() {
+    console.log('here');
+    var e = document.getElementById("exampleFormControlSelect1");
+    var v = e.value;
+    console.log(e);
+    // {{course_id}} = v;
+    console.log(v);
+   // console.log({{course_id}})
+  }
+</script>

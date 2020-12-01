@@ -1,0 +1,15 @@
+.footer{
+  color: white;
+  background-color:black;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-top:0;
+  box-sizing: border-box;
+  height:400px;
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content:space-evenly;
+  font-family: 'Open Sans', sans-serif;
+}
