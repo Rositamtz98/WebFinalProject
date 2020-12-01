@@ -16,15 +16,18 @@
     {{> navigation}}
 
     {{!-- <main class="container p-4"> --}}
-    <main class="container">
+   <div style="padding-top: 4em;">
+     
+        <main class="container">
 
-        {{> messages}}
-        {{> errors}}
-        {{{ body }}}
-    </main>
+            {{> messages}}
+            {{> errors}}
+            {{{ body }}}
+        </main>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/main.js"></script>
-    <p>Footer</p>
+    {{> footer}}
 
     <!-- BOOTSTRAP SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -1,6 +1,9 @@
-{{> sidebar }}
-{{> footer }}
-<div class="row">
+
+
+
+<link rel="stylesheet" href="/css/teachers.css">
+
+{{!-- <div class="row">
   <a href="/courses/add" class="btn btn-success btn-block">+</a>
 </div>
 <div class="row">
@@ -30,4 +33,48 @@
       </div>
     </div>
   {{/each}}
+</div> --}}
+
+<div class="row">
+      <div class="col-md-10"></div>
+    <div class="col-md-2">
+  <a href="/courses/add" class="btn btn-primary btn-block">Nuevo <i class="fa fa-plus"></i></a>
+  </div>
 </div>
+{{!-- <div class="row"> --}}
+  {{#each courses}}
+    <div class="blog-card">
+      <div class="meta">
+        <div class="photo" style="background-image: url(img/crs.png)"></div>
+      </div>
+      <div class="description">
+          <h1>{{subject}} </h1>
+          <h2>ID {{course_id}}</h2>
+          <p>Curso impartido por {{teacher_id}}</p>
+          <p class="read-more"><a href="/courses/view/{{_id}}">Ver actividades</a></p>
+          <div class="row">
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+              <div class="row">
+                <a style="color: #007bff" class="btn btn-link" href="/courses/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+                <form action="/courses/delete/{{_id}}?_method=DELETE" method="POST">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn btn-link" type="submit">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="card mx-auto">
+      <div class="card-body">
+        <p class="lead">No hay ningún curso</p>
+        <a href="/courses/add" class="btn btn-success btn-block">Crea uno</a>
+      </div>
+    </div>
+  {{/each}}
+{{!-- </div> --}}
+

@@ -1,27 +1,46 @@
-{{> sidebar }}
-{{> footer}}
+{{!--  --}}
+
+
+<link rel="stylesheet" href="/css/teachers.css">
 
 <div class="row">
-  <a href="/activities/add" class="btn btn-success btn-block">+</a>
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+          <a href="/activities/add" class="btn btn-primary"> Nueva  <i class="fa fa-plus"></i></a>
+    </div>
+</div>
+
   {{#each activities}}
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title d-flex justify-content-between align-items-center">{{title}}</h2>
-            <a href="/activities/edit/{{_id}}"><i class="fas fa-edit"></i></a>
-          <button class="btn btn-link" onclick=" window.open('{{link}}','_blank')" type="button">Abrir en Google Drive</button>
-          <h4>{{teacher_id}}</h4>
-          <h4>{{#if quiz}}Esta actividad es quiz {{else}}{{/if}}</h4>
-          <form action="/activities/delete/{{_id}}?_method=DELETE" method="POST">
-            <a href="/activities/view/{{_id}}" class="btn btn-success btn-block">Ver detalle</a>
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger btn-block btn-sm" type="submit">
-              Borrar
-            </button>
-          </form>
+    {{!-- <div class="col-md-3"> --}}
+      <div class="blog-card">
+          <div class="meta">
+              <div class="photo" style="background-image: url(img/act.jpg)"></div>
+          </div>
+        <div class="description">
+          <h1>{{#if title}}{{title}}{{else}}Sin título{{/if}}</h1>
+          <h2>Del curso {{course_id}}</h2>
+            <p>
+              <p class="read-more"><a onclick=" window.open('{{link}}','_blank')" type="button">Abrir en Google Drive</a></p>
+            </p>
+            <p class="read-more"><a href="/activities/view/{{_id}}">Ver entregas</a></p>
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <div class="row">
+                    <a style="color: #007bff" class="btn btn-link" href="/activities/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+                    <form action="/activities/delete/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-link" type="submit">
+                        <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                    </div>
+
+                </div>
+            </div>
         </div>
       </div>
-    </div>
+    {{!-- </div> --}}
   {{else}}
     <div class="card mx-auto">
       <div class="card-body">
@@ -30,4 +49,5 @@
       </div>
     </div>
   {{/each}}
-</div>
+
+{{!-- </div> --}}
